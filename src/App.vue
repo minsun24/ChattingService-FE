@@ -6,11 +6,19 @@ import AppHeader from './common/components/AppHeader.vue';
 </script>
 
 <template>
-  <AppHeader />
-  <v-main>
-    <router-view />
-  </v-main>
-  <h1>chat client</h1>
+  <v-app>
+    <AppHeader />
+    <v-main class="main-container">
+      <router-view />
+    </v-main>
+  </v-app>
+  
 </template>
 
-<style scoped></style>
+<style scoped>
+.main-container{
+  width: 100vw;
+  padding-top: 65px;
+  height: 100%;
+}
+</style>
