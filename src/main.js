@@ -4,14 +4,23 @@ import { createPinia } from 'pinia'
 import router from '@/router/index.js'
 import App from './App.vue'
 import vuetify from '@/plugins/vuetify.js'
-import axios from 'axios'
+import { useUserStore } from '@/stores/userStore'
 
-const app = createApp(App);
+const app = createApp(App)
 
-const pinia = createPinia();
+const pinia = createPinia()
+app.use(pinia)
 
-app.use(pinia);
-app.use(router);
-app.use(vuetify);
+const userStore = useUserStore()
+const savedUser = JSON.parse(localStorage.getItem('user'))
+if (savedUser?.accessToken) {
+  userStore.setUser(savedUser)
+}
+else {
+  userStore.clearUser()
+}
 
-app.mount('#app');
+app.use(router)
+app.use(vuetify)
+
+app.mount('#app')

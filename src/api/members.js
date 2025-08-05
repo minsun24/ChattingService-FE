@@ -3,8 +3,6 @@ import api from '@/api/api'
 
 // RequeatMappgin("/members")
 
-
-
 // 회원가입
 export const signup = (payload) => {
     return api.post('/members/signup', payload);
