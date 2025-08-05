@@ -5,24 +5,24 @@ labels: ["feature", "frontend"]
 body:
   - type: input
     attributes:
-      label: 📦 도메인
-      description: 이 기능이 속한 도메인(기능 영역)을 입력해 주세요. (예: auth, chat, profile)
-      placeholder: 예) auth, chat, message, friend, setting 등
+      label: "📦 도메인"
+      description: "이 기능이 속한 도메인(기능 영역)을 입력해 주세요. (예: auth, chat, profile)"
+      placeholder: "예) auth, chat, message, friend, setting 등"
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: 📄 기능 설명
-      description: 어떤 기능을 구현할지 명확하게 작성해 주세요.
-      placeholder: 예) 채팅창 메시지 자동 스크롤 기능 추가
+      label: "📄 기능 설명"
+      description: "어떤 기능을 구현할지 명확하게 작성해 주세요."
+      placeholder: "예) 채팅창 메시지 자동 스크롤 기능 추가"
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: ✅ 작업 내용
-      description: 세부 작업 항목을 체크박스 형태로 작성해 주세요.
+      label: "✅ 작업 내용"
+      description: "세부 작업 항목을 체크박스 형태로 작성해 주세요."
       placeholder: |
         - [ ] UI 디자인 적용
         - [ ] 상태관리(store) 연동
@@ -34,16 +34,16 @@ body:
 
   - type: input
     attributes:
-      label: 🔗 관련 페이지/컴포넌트
-      description: 작업이 영향을 미치는 화면 또는 컴포넌트를 작성해 주세요.
-      placeholder: 예) ChatRoom.vue, MessageInput.vue
+      label: "🔗 관련 페이지/컴포넌트"
+      description: "작업이 영향을 미치는 화면 또는 컴포넌트를 작성해 주세요."
+      placeholder: "예) ChatRoom.vue, MessageInput.vue"
     validations:
       required: false
 
   - type: dropdown
     attributes:
-      label: 🧩 관련 기술 스택
-      description: 이번 기능에 사용될 프론트 기술을 선택해 주세요.
+      label: "🧩 관련 기술 스택"
+      description: "이번 기능에 사용될 프론트 기술을 선택해 주세요."
       multiple: true
       options:
         - Vue
@@ -60,8 +60,8 @@ body:
 
   - type: textarea
     attributes:
-      label: 💬 비고
-      description: 기타 참고 사항이 있다면 작성해 주세요.
-      placeholder: 예) API 응답 형태가 변경될 예정입니다.
+      label: "💬 비고"
+      description: "기타 참고 사항이 있다면 작성해 주세요."
+      placeholder: "예) API 응답 형태가 변경될 예정입니다."
     validations:
       required: false
