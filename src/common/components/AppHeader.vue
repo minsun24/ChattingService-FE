@@ -53,6 +53,9 @@ import logo from '@/assets/images/TokTang.png'
 import logo2 from '@/assets/images/TokTang2.png'
 import logo3 from '@/assets/images/TokTang3.png'
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const isLogin = ref(false);
 
@@ -68,7 +71,7 @@ function logout() {
     // 로그아웃 처리
     localStorage.removeItem("accessToken")
     isLogin.value = false
-    window.location.reload();
+    router.push('/welcome');
 }
 </script>
 
