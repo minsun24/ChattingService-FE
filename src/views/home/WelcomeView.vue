@@ -89,8 +89,9 @@ const goToSignup = () => {
 
 .welcome-text .title {
     font-family: 'Bagel Fat One', cursive;
-    font-size: 65px;
+    font-size: 70px;
     line-height: 1.4;
+    font-weight: normal;
 }
 
 .note {

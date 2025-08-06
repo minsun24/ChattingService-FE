@@ -8,3 +8,6 @@ export const signup = (payload) => {
     return api.post('/members/signup', payload);
 }
 
+export const getMemberList = () => {
+    return api.get('/members/list')
+}

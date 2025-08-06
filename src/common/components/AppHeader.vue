@@ -52,29 +52,32 @@
 import logo from '@/assets/images/TokTang.png'
 import logo2 from '@/assets/images/TokTang2.png'
 import logo3 from '@/assets/images/TokTang3.png'
-import { ref, onMounted } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/userStore'
+
 
 const router = useRouter()
+const userStore = useUserStore()
 
-const isLogin = ref(false);
+const isLogin = ref(userStore.isLoggedIn)
 
-onMounted(() => {
-    const token = localStorage.getItem("accessToken");
-    if(token){
-        isLogin.value = true;
-    }
+// 로그인 상태 감시 (토큰 변경 시 UI 반영)
+watch(() => userStore.isLoggedIn, (val) => {
+  isLogin.value = val
 })
 
-function logout() {
-    console.log('로그아웃 중')
-    // 로그아웃 처리
-    localStorage.removeItem("accessToken")
-    localStorage.removeItem("user")
+onMounted(() => {
+  userStore.initializeUserFromStorage()
+  isLogin.value = userStore.isLoggedIn
+})
 
-    isLogin.value = false
-    router.push('/welcome');
+
+function logout() {
+  userStore.logout()
+  router.push('/welcome')
 }
+
 </script>
 
 <style scoped>
