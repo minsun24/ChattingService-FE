@@ -17,6 +17,24 @@ export const useUserStore = defineStore('user', {
         isAdmin: (state) => state.user.role === 'ADMIN'
     },
     actions: {
+        initializeUserFromStorage() {
+            const accessToken = localStorage.getItem('accessToken')
+            const user = JSON.parse(localStorage.getItem('user'))
+
+            if (accessToken && user) {
+                this.accessToken = accessToken
+                this.user = user
+            } else {
+                this.clearUser()
+            }
+        },
+        login({ accessToken, memberId, email, role }) {
+            this.accessToken = accessToken
+            this.user = { memberId, email, role }
+
+            localStorage.setItem('accessToken', accessToken)
+            localStorage.setItem('user', JSON.stringify(this.user))
+        },
         setUser({ accessToken, refreshToken, memberId, email, role, tokenExpiresAt }) {
             this.accessToken = accessToken
             this.refreshToken = refreshToken
@@ -28,6 +46,9 @@ export const useUserStore = defineStore('user', {
             this.refreshToken = ''
             this.tokenExpiresAt = null
             this.user = { memberId: null, email: '', role: '' }
+
+            localStorage.removeItem('accessToken')
+            localStorage.removeItem('user')
         },
 
         logout() {
