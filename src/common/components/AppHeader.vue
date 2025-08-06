@@ -70,6 +70,8 @@ function logout() {
     console.log('로그아웃 중')
     // 로그아웃 처리
     localStorage.removeItem("accessToken")
+    localStorage.removeItem("user")
+
     isLogin.value = false
     router.push('/welcome');
 }

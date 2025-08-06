@@ -4,14 +4,16 @@ import { createPinia } from 'pinia'
 import router from '@/router/index.js'
 import App from './App.vue'
 import vuetify from '@/plugins/vuetify.js'
-import axios from 'axios'
+import { useUserStore } from '@/stores/userStore'
 
-const app = createApp(App);
+const app = createApp(App)
+const pinia = createPinia()
+app.use(pinia)
 
-const pinia = createPinia();
+const userStore = useUserStore()
+userStore.initializeUserFromStorage()
 
-app.use(pinia);
-app.use(router);
-app.use(vuetify);
+app.use(router)
+app.use(vuetify)
 
-app.mount('#app');
+app.mount('#app')

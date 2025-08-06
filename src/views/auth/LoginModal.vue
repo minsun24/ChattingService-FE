@@ -43,8 +43,12 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { login } from '@/api/auth'
+import { nextTick } from 'vue'
+import { useUserStore } from '@/stores/userStore'
 
+const userStore = useUserStore()
 const router = useRouter(); 
+
 const valid = ref(false)
 const formRef = ref(null)
 
@@ -64,15 +68,10 @@ const memberLogin = async () => {
         if (res.data.status === 'success') {
             const { accessToken, memberId, email, role } = res.data.data
 
-            // 로컬스토리지 저장
-            localStorage.setItem('accessToken', accessToken)
-            const user = {
-                memberId,
-                email,
-                role,
-            }
-            localStorage.setItem('user', JSON.stringify(user))
+            // 유저 로그인 상태 동기화
+            userStore.login({ accessToken, memberId, email, role })
 
+            await nextTick()    // 업데이트 반영
             // 로그인 후 이동
             router.push('/')
         }

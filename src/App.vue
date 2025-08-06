@@ -23,7 +23,7 @@ const showHeader = !hideHeaderRoutes.includes(route.path);
 <style scoped>
 *{
   padding : 0;
-  
+
 }
 .main-container {
   width: 100vw;
