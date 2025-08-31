@@ -28,6 +28,21 @@ const routes = [
         component:  () => import('@/views/chatting/ChattingListView.vue'),
         meta: { requiresAuth: true }
     },
+
+    // 웹소켓 연결 관련
+    {
+        path: '/simple/chat',
+        name: 'SimpleWebSocket',
+        component:  () => import('@/views/chatting/SimpleWebSocket.vue'),
+        meta: { requiresAuth: true }
+    },
+    // STOMP
+    {
+        path: '/chatpage',
+        name: 'StompChatPage',
+        component:  () => import('@/views/chatting/StompChatPage.vue'),
+        meta: { requiresAuth: true }
+    },
     
 ]
 
