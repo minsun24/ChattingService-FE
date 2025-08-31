@@ -32,6 +32,7 @@
 
 <script setup>
 import { ref, watch, onMounted, onUnmounted, nextTick  } from 'vue';
+import SockJS from 'sockjs-client';
 import Stomp from 'webstomp-client';
 import axios from 'axios';
 
@@ -50,11 +51,12 @@ const connectWebSocket = () => {
 
     stompClient.value = Stomp.over(sockJs);    // 통신을 위한 STOMP 객체 생성
 
-    stompClient.value.connect(
+    stompClient.value.connect({},  // Illegal Header 에러 해결 위해 : 헤더 위치에 {} 를 넣어주어, 헤더 객체가 비어있음을 명시 
         () => {
             // #TODO. 채팅방 변수화 필요
-            stompClient.subscribe(`/topic/1`, (message) => {
-                messages.value.push(message.data);
+            stompClient.value.subscribe(`/topic/1`, (message) => {
+                console.log('메시지 형태 체크', message); // 
+                messages.value.push(message.body);
                 scrollToBottom();   // 스크롤
             })   
         }

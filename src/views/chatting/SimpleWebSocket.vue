@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <v-container>
         <v-row justify="center">
             <v-col cols="12" md="8">
@@ -42,7 +42,7 @@ const connectWebSocket = () => {
 
     // 연결된 객체 없을 때만 다시 연결 생성하기. => 서버 부하 방지
     if(ws.value === null){
-        ws.value = new WebSocket("ws://localhost:5000/connect")
+        ws.value = new WebSocket("ws://localhost:8080/connect")
     }else{
         console.log("✅ 이미 웹소켓에 연결되어 있습니다.")
     }
@@ -135,4 +135,4 @@ watch(messages, () => {
     border: 1px solid #DDD;
     margin-bottom: 10px;
 }
-</style>
+</style> -->

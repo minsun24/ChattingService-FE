@@ -3,7 +3,7 @@ import { useUserStore } from '@/stores/userStore'
 
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,  // 공통 prefix
+  baseURL: import.meta.env.VITE_API_URL+"/api",  // 공통 prefix
   headers: {
     'Content-Type': 'application/json'
   }
